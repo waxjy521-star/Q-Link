@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <title>Q-Link · 连接每一种可能</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="authView" class="auth-shell">
+    <div class="auth-art">
+      <div class="brand-mark">Q</div>
+      <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+      <div class="auth-copy">
+        <span class="eyebrow">A BETTER WAY TO CONNECT</span>
+        <h1>让每一次连接<br><span>都有意义。</span></h1>
+        <p>聊天、分享、协作。把重要的人和消息，放在一个舒服的空间里。</p>
+      </div>
+      <div class="auth-foot">Q-LINK / PERSONAL COMMUNICATION SPACE</div>
+    </div>
+    <div class="auth-panel">
+      <div class="mobile-brand"><span class="brand-mark small">Q</span><b>Q-Link</b></div>
+      <div class="auth-card">
+        <div class="auth-heading"><span class="eyebrow">WELCOME TO Q-LINK</span><h2 id="authTitle">欢迎回来</h2><p id="authSub">登录你的 Q-Link 账号，继续连接。</p></div>
+        <form id="authForm">
+          <label id="nicknameWrap" class="field hidden">昵称<input id="nickname" maxlength="24" placeholder="怎么称呼你？"></label>
+          <label class="field">账号<input id="username" autocomplete="username" minlength="4" maxlength="24" placeholder="4-24 位英文、数字或下划线" required></label>
+          <label class="field">密码<input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="至少 8 位" required></label>
+          <button class="primary-btn wide" id="authSubmit">登录 Q-Link <span>↗</span></button>
+        </form>
+        <p class="auth-switch"><span id="switchText">还没有账号？</span> <button id="switchAuth" class="text-btn">创建账号</button></p>
+        <p id="authError" class="error-text"></p>
+      </div>
+      <div class="auth-legal">继续使用即表示你同意遵守社区规则。请勿分享密码或敏感信息。</div>
+    </div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="rail">
+      <div class="rail-logo">Q</div>
+      <button class="rail-btn active" data-page="messages" title="消息"><span>▤</span></button>
+      <button class="rail-btn" data-page="contacts" title="联系人"><span>♧</span></button>
+      <button class="rail-btn" data-page="groups" title="群聊"><span>▦</span></button>
+      <div class="rail-spacer"></div>
+      <button class="rail-btn" data-page="settings" title="设置"><span>⚙</span></button>
+      <button id="railAvatar" class="rail-avatar" title="个人资料">Q</button>
+    </aside>
+
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div><div class="eyebrow">YOUR SPACE</div><h2 id="sectionTitle">消息</h2></div>
+        <button id="newAction" class="icon-btn" title="新建">＋</button>
+      </div>
+      <div class="search-box"><span>⌕</span><input id="globalSearch" placeholder="搜索好友、群聊..." /></div>
+      <div id="sideList" class="side-list"></div>
+      <div class="sidebar-bottom">
+        <div class="mini-avatar" id="miniAvatar">Q</div>
+        <div class="user-mini"><b id="miniName">Q-Link 用户</b><span id="miniStatus">在线</span></div>
+        <button id="logoutBtn" class="icon-btn" title="退出登录">↪</button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="crumb"><span class="crumb-dot"></span><span id="topContext">消息</span></div>
+        <div class="top-actions"><span class="connection"><i></i> 已连接</span><button class="icon-btn" id="themeBtn" title="切换主题">◐</button></div>
+      </header>
+
+      <section id="welcomePanel" class="welcome-panel">
+        <div class="welcome-graphic"><div class="welcome-ring"></div><div class="welcome-q">Q</div><span class="spark spark-a">✦</span><span class="spark spark-b">✧</span></div>
+        <span class="eyebrow">YOUR WORLD, YOUR PEOPLE</span>
+        <h1>连接，从这里开始。</h1>
+        <p>选择一个会话，或添加好友，开启你的 Q-Link 旅程。</p>
+        <div class="welcome-actions"><button class="primary-btn" id="welcomeAdd">添加好友 <span>＋</span></button><button class="secondary-btn" id="welcomeProfile">编辑个人资料</button></div>
+      </section>
+
+      <section id="chatPanel" class="chat-panel hidden">
+        <header class="chat-head">
+          <div class="person-avatar" id="chatAvatar">Q</div>
+          <div class="chat-person"><b id="chatName">会话</b><span id="chatPresence">Q-Link 对话</span></div>
+          <div class="chat-tools"><button class="icon-btn" title="搜索聊天记录" id="chatSearch">⌕</button><button class="icon-btn" title="更多">•••</button></div>
+        </header>
+        <div id="messageList" class="message-list"></div>
+        <form id="messageForm" class="composer">
+          <div class="composer-tools"><button type="button" class="tool-btn" title="表情" id="emojiBtn">☺</button><button type="button" class="tool-btn" title="提示">＋</button></div>
+          <textarea id="messageInput" rows="1" maxlength="4000" placeholder="发送消息...  Enter 发送，Shift + Enter 换行"></textarea>
+          <button class="send-btn" type="submit">发送 <span>↗</span></button>
+        </form>
+      </section>
+
+      <section id="contentPanel" class="content-panel hidden"></section>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
